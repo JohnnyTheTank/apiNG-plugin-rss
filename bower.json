@@ -1,0 +1,30 @@
+{
+  "name": "apiNG-plugin-rss",
+  "homepage": "https://github.com/JohnnyTheTank/apiNG-plugin-rss",
+  "authors": [
+    "Jonathan Hornung <jonathan.hornung@gmail.com>"
+  ],
+  "version": "0.1.0",
+  "description": "rss plugin for apiNG",
+  "main": "dist/apiNG-plugin-rss.min.js",
+  "moduleType": [],
+  "keywords": [
+    "aping",
+    "rss",
+    "angularjs",
+    "rest",
+    "api",
+    "json"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "apiNG": "*"
+  }
+}
