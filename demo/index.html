@@ -6,7 +6,6 @@
 
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../bower_components/angular/angular.min.js"></script>
-    <script src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="../bower_components/apiNG/dist/aping.min.js"></script>
     <script src="aping-config.js"></script>
     <script src="app.js"></script>
@@ -17,8 +16,10 @@
 <body ng-app="app">
     <aping
             model="social"
-            items="2"
-            aping-rss="[{'path':'https://community.mcafee.com/blogs/feeds/blogs'}]">
+            items="5"
+            order-by="caption"
+            order-reverse="false"
+            aping-rss="[{'path':'http://www.magazin.dtv.de/index.php/feed/'}]">
     </aping>
     <hr>
     <aping
