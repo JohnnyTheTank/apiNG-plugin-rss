@@ -24,9 +24,9 @@ You can choose your preferred method of installation:
 * Download from github: [apiNG-plugin-rss.zip](https://github.com/JohnnyTheTank/apiNG-plugin-rss/zipball/master)
 
 ### b) Include files
-Include `apiNG-plugin-rss.min.js` in your apiNG application
+Include `aping-plugin-rss.min.js` in your apiNG application
 ```html
-<script src="bower_components/apiNG-plugin-rss/dist/apiNG-plugin-rss.min.js"></script>
+<script src="bower_components/apiNG-plugin-rss/dist/aping-plugin-rss.min.js"></script>
 ```
 
 ### c) Add dependencies
