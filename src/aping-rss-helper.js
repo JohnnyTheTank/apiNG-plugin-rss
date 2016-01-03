@@ -7,7 +7,7 @@
  */
 
 jjtApingRss.service('apingRssHelper', ['apingModels', 'apingTimeHelper', 'apingUtilityHelper', function (apingModels, apingTimeHelper, apingUtilityHelper) {
-    this.getThisPlattformString = function () {
+    this.getThisPlatformString = function () {
         return "rss";
     };
 
@@ -59,7 +59,7 @@ jjtApingRss.service('apingRssHelper', ['apingModels', 'apingTimeHelper', 'apingU
     };
 
     this.getSocialItemByJsonData = function (_item) {
-        var socialObject = apingModels.getNew("social", this.getThisPlattformString());
+        var socialObject = apingModels.getNew("social", this.getThisPlatformString());
 
         //fill _item in socialObject
         $.extend(true, socialObject, {
@@ -76,6 +76,12 @@ jjtApingRss.service('apingRssHelper', ['apingModels', 'apingTimeHelper', 'apingU
             socialObject.text = _item.title || undefined;
         }
 
+        if(_item.content) {
+            var imagesArray = apingUtilityHelper.getFirstImageFromHtml(_item.content);
+            if(imagesArray.length>1) {
+                socialObject.img_url = imagesArray[1];
+            }
+        }
 
         socialObject.date_time = _item.publishedDate ? new Date(_item.publishedDate) : undefined;
         socialObject.timestamp = socialObject.date_time ? socialObject.date_time.getTime() : undefined;

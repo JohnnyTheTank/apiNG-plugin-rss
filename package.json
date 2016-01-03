@@ -1,6 +1,6 @@
 {
   "name": "aping-plugin-rss",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "RSS plugin for apiNG",
   "main": "Gruntfile.js",
   "scripts": {
