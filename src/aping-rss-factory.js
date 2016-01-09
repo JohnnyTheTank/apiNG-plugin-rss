@@ -1,3 +1,5 @@
+"use strict";
+
 jjtApingRss.factory('rssFactory', ['$http', function ($http) {
     var rssFactory = {};
     rssFactory.getData = function (_requestObject) {

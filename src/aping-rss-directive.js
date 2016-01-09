@@ -1,11 +1,5 @@
 "use strict";
 
-/**
- @author Jonathan Hornung (https://github.com/JohnnyTheTank)
- @url https://github.com/JohnnyTheTank/apiNG-plugin-rss
- @licence MIT
- */
-
 var jjtApingRss = angular.module("jtt_aping_rss", [])
     .directive('apingRss', ['apingRssHelper', 'apingUtilityHelper', 'rssFactory', function (apingRssHelper, apingUtilityHelper, rssFactory) {
         return {
@@ -28,6 +22,10 @@ var jjtApingRss = angular.module("jtt_aping_rss", [])
                         helperObject.getNativeData = appSettings.getNativeData;
                     } else {
                         helperObject.getNativeData = false;
+                    }
+
+                    if(request.parseImage === "true" || request.parseImage === true) {
+                        helperObject.parseImage = true;
                     }
 
                     //create requestObject for api request call
@@ -57,7 +55,7 @@ var jjtApingRss = angular.module("jtt_aping_rss", [])
 
                     //get _data for each request
                     rssFactory.getData(requestObject)
-                        .success(function (_data) {
+                        .then(function (_data) {
                             if (_data) {
                                 apingController.concatToResults(apingRssHelper.getObjectByJsonData(_data, helperObject));
                             }

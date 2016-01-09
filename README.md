@@ -12,21 +12,32 @@
     II. USAGE
 
 ## I. INSTALLATION
-    a) Get files
-    b) Include files
+    a) Get file
+    b) Include file
     c) Add dependencies
     d) Add the plugin
 
-### a) Get files
+### a) Get file
 You can choose your preferred method of installation:
 
-* Via bower: `bower install apiNG-plugin-rss --save`
-* Download from github: [apiNG-plugin-rss.zip](https://github.com/JohnnyTheTank/apiNG-plugin-rss/zipball/master)
+Install via either [bower](http://bower.io/), [npm](https://www.npmjs.com/) or downloaded files:
 
-### b) Include files
+* `bower install apiNG-plugin-rss --save`
+* `npm install aping-plugin-rss --save`
+* download [apiNG-plugin-rss.zip](https://github.com/JohnnyTheTank/apiNG-plugin-rss/zipball/master)
+
+### b) Include file
 Include `aping-plugin-rss.min.js` in your apiNG application
+
 ```html
+<!-- when using bower -->
 <script src="bower_components/apiNG-plugin-rss/dist/aping-plugin-rss.min.js"></script>
+
+<!-- when using npm -->
+<script src="node_modules/aping-plugin-rss/dist/aping-plugin-rss.min.js"></script>
+
+<!-- when using downloaded files -->
+<script src="aping-plugin-rss.min.js"></script>
 ```
 
 ### c) Add dependencies
@@ -63,10 +74,11 @@ Supported apiNG models
 Every **apiNG plugin** expects an array of **requests** as html attribute.
 
 #### Requests by URL
-|  parameter  | sample | description | optional |
-|----------|---------|---------|---------|
-| **`path`** | `http://blog.hackerearth.com/feed` | RSS feed url | no |
-| **`items`**  | `15` | Items per request (`0`-`n`) |  yes  |
+|  parameter  | sample | default | description | optional |
+|----------|---------|---------|---------|---------|
+| **`path`** | `http://blog.hackerearth.com/feed` | |  RSS feed url | no |
+| **`items`**  | `15` | | Items per request (`0`-`n`) |  yes  |
+| **`parseImage`**  | `false` | `true` | Use `true` for try to parse image from content. This parameter only works for `social` model |  yes  |
 
 Sample requests:
 * `[{'path':'http://blog.hackerearth.com/feed'}, {'path':'http://www.magazin.dtv.de/index.php/feed/'}]`

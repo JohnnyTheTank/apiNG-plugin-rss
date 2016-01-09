@@ -9,9 +9,7 @@
     <script src="../bower_components/apiNG/dist/aping.min.js"></script>
     <script src="aping-config.js"></script>
     <script src="app.js"></script>
-    <script src="../src/aping-rss-directive.js"></script>
-    <script src="../src/aping-rss-factory.js"></script>
-    <script src="../src/aping-rss-helper.js"></script>
+    <script src="../dist/aping-plugin-rss.js"></script>
 </head>
 <body ng-app="app">
     <aping
@@ -19,7 +17,7 @@
             items="5"
             order-by="caption"
             order-reverse="false"
-            aping-rss="[{'path':'http://feeds.feedburner.com/Angular-jsDirectives?utm_source=angular-js.in&utm_medium=website&utm_campaign=content-curation'}]">
+            aping-rss="[{'path':'http://feeds.feedburner.com/Angular-jsDirectives?utm_source=angular-js.in&utm_medium=website&utm_campaign=content-curation', 'parseImage':false}]">
     </aping>
     <hr>
     <aping

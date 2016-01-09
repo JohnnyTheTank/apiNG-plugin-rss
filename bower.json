@@ -4,9 +4,9 @@
   "authors": [
     "Jonathan Hornung <jonathan.hornung@gmail.com>"
   ],
-  "version": "0.6.1",
-  "description": "rss plugin for apiNG",
-  "main": "dist/apiNG-plugin-rss.min.js",
+  "version": "0.7.0",
+  "description": "RSS plugin for apiNG",
+  "main": "dist/aping-plugin-rss.min.js",
   "moduleType": [],
   "keywords": [
     "aping",
