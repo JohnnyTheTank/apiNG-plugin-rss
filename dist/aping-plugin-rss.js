@@ -1,6 +1,6 @@
 /**
     @name: aping-plugin-rss 
-    @version: 0.7.0 (09-01-2016) 
+    @version: 0.7.1 (09-01-2016) 
     @author: Jonathan Hornung 
     @url: https://github.com/JohnnyTheTank/apiNG-plugin-rss#readme 
     @license: MIT
@@ -31,7 +31,9 @@ var jjtApingRss = angular.module("jtt_aping_rss", [])
                         helperObject.getNativeData = false;
                     }
 
-                    if(request.parseImage === "true" || request.parseImage === true) {
+                    if(request.parseImage === "false" || request.parseImage === false) {
+                        helperObject.parseImage = false;
+                    } else {
                         helperObject.parseImage = true;
                     }
 

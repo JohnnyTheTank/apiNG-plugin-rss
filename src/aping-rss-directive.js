@@ -24,7 +24,9 @@ var jjtApingRss = angular.module("jtt_aping_rss", [])
                         helperObject.getNativeData = false;
                     }
 
-                    if(request.parseImage === "true" || request.parseImage === true) {
+                    if(request.parseImage === "false" || request.parseImage === false) {
+                        helperObject.parseImage = false;
+                    } else {
                         helperObject.parseImage = true;
                     }
 
