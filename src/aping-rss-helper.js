@@ -14,7 +14,7 @@ jjtApingRss.service('apingRssHelper', ['apingModels', 'apingTimeHelper', 'apingU
 
                 angular.forEach(_data.data.responseData.feed.entries, function (value, key) {
                     var tempResult;
-                    if(_helperObject.getNativeData === true || _helperObject.getNativeData === "true") {
+                    if (_helperObject.getNativeData === true || _helperObject.getNativeData === "true") {
                         tempResult = value;
                     } else {
 
@@ -23,7 +23,7 @@ jjtApingRss.service('apingRssHelper', ['apingModels', 'apingTimeHelper', 'apingU
 
                         tempResult = _this.getItemByJsonData(value, _helperObject);
                     }
-                    if(tempResult) {
+                    if (tempResult) {
                         requestResults.push(tempResult);
                     }
                 });
@@ -63,16 +63,16 @@ jjtApingRss.service('apingRssHelper', ['apingModels', 'apingTimeHelper', 'apingU
             source: (_item.categories && _item.categories.length > 0) ? _item.categories : undefined
         });
 
-        if(_item.content) {
+        if (_item.content) {
             socialObject.text = apingUtilityHelper.getTextFromHtml(_item.content);
             socialObject.caption = _item.title || undefined;
         } else {
             socialObject.text = _item.title || undefined;
         }
 
-        if(_item.content && _helperObject.parseImage) {
+        if (_item.content && _helperObject.parseImage) {
             var imagesArray = apingUtilityHelper.getFirstImageFromHtml(_item.content);
-            if(imagesArray.length>1) {
+            if (imagesArray && imagesArray.length > 1) {
                 socialObject.img_url = imagesArray[1];
             }
         }

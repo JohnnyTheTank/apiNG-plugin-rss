@@ -12,12 +12,18 @@
     <script src="../dist/aping-plugin-rss.js"></script>
 </head>
 <body ng-app="app">
+
+    <aping
+            model="social"
+            aping-rss="[{'path':'https://github.com/JohnnyTheTank.atom'}]">
+    </aping>
+    <hr>
     <aping
             model="social"
             items="5"
             order-by="caption"
             order-reverse="false"
-            aping-rss="[{'path':'http://feeds.feedburner.com/Angular-jsDirectives?utm_source=angular-js.in&utm_medium=website&utm_campaign=content-curation', 'parseImage':false}]">
+            aping-rss="[{'path':'http://feeds.feedburner.com/Angular-jsDirectives?utm_source=angular-js.in&utm_medium=website&utm_campaign=content-curation'}]">
     </aping>
     <hr>
     <aping
