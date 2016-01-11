@@ -5,28 +5,30 @@
 
 # Information
 * **Supported apiNG models: `social`, `native` (RSS)**
+* This plugin supports the [`get-native-data` parameter](https://aping.readme.io/docs/configuration#parameters)
 * Used RSS->JSON parse service: `http://ajax.googleapis.com/ajax/services/feed/load`
 
 # Documentation
-    I.  INSTALLATION
-    II. USAGE
 
-## I. INSTALLATION
-    a) Get file
-    b) Include file
-    c) Add dependencies
-    d) Add the plugin
+1. [INSTALLATION](#1-installation)
+    1. Get file
+    2. Include file
+    3. Add dependencies
+    4. Add plugin
+2. [USAGE](#2-usage)
+    1. Models
+    2. Requests
 
-### a) Get file
-You can choose your preferred method of installation:
+## 1. INSTALLATION
 
+### I. Get file
 Install via either [bower](http://bower.io/), [npm](https://www.npmjs.com/) or downloaded files:
 
 * `bower install apiNG-plugin-rss --save`
 * `npm install aping-plugin-rss --save`
 * download [apiNG-plugin-rss.zip](https://github.com/JohnnyTheTank/apiNG-plugin-rss/zipball/master)
 
-### b) Include file
+### II. Include file
 Include `aping-plugin-rss.min.js` in your apiNG application
 
 ```html
@@ -40,14 +42,14 @@ Include `aping-plugin-rss.min.js` in your apiNG application
 <script src="aping-plugin-rss.min.js"></script>
 ```
 
-### c) Add dependencies
+### III. Add dependencies
 Add the module `jtt_aping_rss` as a dependency to your app module:
 ```js
 var app = angular.module('app', ['jtt_aping', 'jtt_aping_rss']);
 ```
 
-### d) Add the plugin
-Add the plugin's directive `aping-rss="[]"` to your apiNG directive and configure your requests (_**II. USAGE**_)
+### IV. Add the plugin
+Add the plugin's directive `aping-rss="[]"` to your apiNG directive and [configure your requests](#ii-requests)
 ```html
 <aping
     template-url="templates/social.html"
@@ -57,11 +59,9 @@ Add the plugin's directive `aping-rss="[]"` to your apiNG directive and configur
 </aping>
 ```
 
-## II. USAGE
-    a) Models
-    b) Requests
+## 2. USAGE
 
-### a) Models
+### I. Models
 Supported apiNG models
 
 |  model   | content |
@@ -69,8 +69,7 @@ Supported apiNG models
 | `social` | **RSS feed** |
 | `native` (RSS) | **RSS feed** |
 
-
-### b) Requests
+### II. Requests
 Every **apiNG plugin** expects an array of **requests** as html attribute.
 
 #### Requests by URL
