@@ -42,6 +42,7 @@ jjtApingRss.service('apingRssHelper', ['apingModels', 'apingTimeHelper', 'apingU
                     break;
 
                 case "native":
+                case "rss":
                     returnObject = _item;
                     break;
 

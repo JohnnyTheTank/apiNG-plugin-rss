@@ -7,18 +7,19 @@
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../bower_components/angular/angular.min.js"></script>
     <script src="../bower_components/apiNG/dist/aping.min.js"></script>
-    <script src="aping-config.js"></script>
     <script src="app.js"></script>
     <script src="../dist/aping-plugin-rss.js"></script>
 </head>
 <body ng-app="app">
 
     <aping
+            template-url="template.html"
             model="social"
             aping-rss="[{'path':'https://github.com/JohnnyTheTank.atom'}]">
     </aping>
     <hr>
     <aping
+            template-url="template.html"
             model="social"
             items="5"
             order-by="caption"
@@ -27,7 +28,8 @@
     </aping>
     <hr>
     <aping
-            model="social"
+            template-url="template.html"
+            model="native"
             aping-rss="[{'path':'http://blog.hackerearth.com/feed'}]">
     </aping>
 </body>

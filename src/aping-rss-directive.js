@@ -42,7 +42,7 @@ var jjtApingRss = angular.module("jtt_aping_rss", [])
                         requestObject.num = appSettings.items;
                     }
 
-                    if(requestObject.num == 0) {
+                    if (requestObject.num === 0 || requestObject.num === '0') {
                         return false;
                     }
 
