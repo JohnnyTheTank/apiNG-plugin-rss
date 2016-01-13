@@ -1,11 +1,14 @@
 [logo]: http://aping.io/logo/320/aping-plugin.png "apiNG Plugin"
 ![apiNG][logo]
 
+[![npm version](https://badge.fury.io/js/aping-plugin-rss.png)](https://badge.fury.io/js/aping-plugin-rss)
+[![Bower version](https://badge.fury.io/bo/apiNG-plugin-rss.png)](https://badge.fury.io/bo/apiNG-plugin-rss)
+
 **_apiNG-plugin-rss_** is a [RSS](http://cyber.law.harvard.edu/rss/rss.html) plugin for [**apiNG**](https://github.com/JohnnyTheTank/apiNG).
 
 # Information
 * **Supported apiNG models: `social`, `native` (RSS)**
-* This plugin supports the [`get-native-data` parameter](https://aping.readme.io/docs/configuration#parameters)
+* This plugin supports the [`get-native-data` parameter](https://aping.readme.io/docs/advanced#parameters)
 * Used RSS->JSON parse service: `http://ajax.googleapis.com/ajax/services/feed/load`
 
 # Documentation
@@ -13,7 +16,7 @@
 1. [INSTALLATION](#1-installation)
     1. Get file
     2. Include file
-    3. Add dependencies
+    3. Add dependency
     4. Add plugin
 2. [USAGE](#2-usage)
     1. Models
@@ -42,7 +45,7 @@ Include `aping-plugin-rss.min.js` in your apiNG application
 <script src="aping-plugin-rss.min.js"></script>
 ```
 
-### III. Add dependencies
+### III. Add dependency
 Add the module `jtt_aping_rss` as a dependency to your app module:
 ```js
 var app = angular.module('app', ['jtt_aping', 'jtt_aping_rss']);
