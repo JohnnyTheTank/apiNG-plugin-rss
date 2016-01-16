@@ -25,10 +25,11 @@
 ## 1. INSTALLATION
 
 ### I. Get file
-Install via either [bower](http://bower.io/), [npm](https://www.npmjs.com/) or downloaded files:
+Install via either [bower](http://bower.io/), [npm](https://www.npmjs.com/), CDN (jsDelivr) or downloaded files:
 
 * `bower install apiNG-plugin-rss --save`
 * `npm install aping-plugin-rss --save`
+* use [CDN file](https://www.jsdelivr.com/projects/aping.plugin-rss)
 * download [apiNG-plugin-rss.zip](https://github.com/JohnnyTheTank/apiNG-plugin-rss/zipball/master)
 
 ### II. Include file
@@ -40,6 +41,10 @@ Include `aping-plugin-rss.min.js` in your apiNG application
 
 <!-- when using npm -->
 <script src="node_modules/aping-plugin-rss/dist/aping-plugin-rss.min.js"></script>
+
+
+<!-- when using cdn file -->
+<script src="//cdn.jsdelivr.net/aping.plugin-rss/latest/aping-plugin-rss.min.js"></script>
 
 <!-- when using downloaded files -->
 <script src="aping-plugin-rss.min.js"></script>
