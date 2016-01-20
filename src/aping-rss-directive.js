@@ -50,6 +50,12 @@ var jjtApingRss = angular.module("jtt_aping_rss", [])
                         requestObject.q = request.path;
                     }
 
+                    if(request.protocol === "http" || request.protocol === "https") {
+                        requestObject.protocol = request.protocol+"://";
+                    } else {
+                        requestObject.protocol = "//";
+                    }
+
                     // -1 is "no explicit limit". same for NaN value
                     if(requestObject.num < 0 || isNaN(requestObject.num)) {
                         requestObject.num = undefined;

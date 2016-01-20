@@ -1,6 +1,6 @@
 /**
     @name: aping-plugin-rss 
-    @version: 0.7.6 (11-01-2016) 
+    @version: 0.7.7 (20-01-2016) 
     @author: Jonathan Hornung 
     @url: https://github.com/JohnnyTheTank/apiNG-plugin-rss#readme 
     @license: MIT
@@ -57,6 +57,12 @@ var jjtApingRss = angular.module("jtt_aping_rss", [])
                         requestObject.q = request.path;
                     }
 
+                    if(request.protocol === "http" || request.protocol === "https") {
+                        requestObject.protocol = request.protocol+"://";
+                    } else {
+                        requestObject.protocol = "//";
+                    }
+
                     // -1 is "no explicit limit". same for NaN value
                     if(requestObject.num < 0 || isNaN(requestObject.num)) {
                         requestObject.num = undefined;
@@ -77,8 +83,12 @@ var jjtApingRss = angular.module("jtt_aping_rss", [])
 jjtApingRss.factory('rssFactory', ['$http', function ($http) {
     var rssFactory = {};
     rssFactory.getData = function (_requestObject) {
+
+        var url = _requestObject.protocol + 'ajax.googleapis.com/ajax/services/feed/load';
+        _requestObject.protocol = undefined;
+
         return $http.jsonp(
-            '//ajax.googleapis.com/ajax/services/feed/load',
+            url,
             {
                 method: 'GET',
                 params: _requestObject
