@@ -86,7 +86,7 @@ Every **apiNG plugin** expects an array of **requests** as html attribute.
 | **`path`** | `http://blog.hackerearth.com/feed` | |  RSS feed url | no |
 | **`items`**  | `15` | | Items per request (`0`-`n`) |  yes  |
 | **`parseImage`**  | `false` | `true` | Use `true` for try to parse image from content. This parameter only works for `social` model |  yes  |
-| **`protocol`**  | `https` |  | Use `https` or `http` to force the protocol. Leave it blank to for dynamic choose |  yes  |
+| **`protocol`**  | `https` |  | Use `https` or `http` to force the protocol. Leave it blank to for dynamic choice |  yes  |
 
 Sample requests:
 * `[{'path':'http://blog.hackerearth.com/feed'}, {'path':'http://www.magazin.dtv.de/index.php/feed/'}]`
