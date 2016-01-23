@@ -53,7 +53,7 @@ Include `aping-plugin-rss.min.js` in your apiNG application
 ### III. Add dependency
 Add the module `jtt_aping_rss` as a dependency to your app module:
 ```js
-var app = angular.module('app', ['jtt_aping', 'jtt_aping_rss']);
+angular.module('app', ['jtt_aping', 'jtt_aping_rss']);
 ```
 
 ### IV. Add the plugin
