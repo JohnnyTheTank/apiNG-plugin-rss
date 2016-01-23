@@ -1,6 +1,6 @@
 "use strict";
 
-var jjtApingRss = angular.module("jtt_aping_rss", [])
+angular.module("jtt_aping_rss", [])
     .directive('apingRss', ['apingRssHelper', 'apingUtilityHelper', 'rssFactory', function (apingRssHelper, apingUtilityHelper, rssFactory) {
         return {
             require: '?aping',
@@ -18,13 +18,13 @@ var jjtApingRss = angular.module("jtt_aping_rss", [])
                     var helperObject = {
                         model: appSettings.model,
                     };
-                    if(typeof appSettings.getNativeData !== "undefined") {
+                    if (typeof appSettings.getNativeData !== "undefined") {
                         helperObject.getNativeData = appSettings.getNativeData;
                     } else {
                         helperObject.getNativeData = false;
                     }
 
-                    if(request.parseImage === "false" || request.parseImage === false) {
+                    if (request.parseImage === "false" || request.parseImage === false) {
                         helperObject.parseImage = false;
                     } else {
                         helperObject.parseImage = true;
@@ -32,11 +32,11 @@ var jjtApingRss = angular.module("jtt_aping_rss", [])
 
                     //create requestObject for api request call
                     var requestObject = {
-                        v:"1.0",
+                        v: "1.0",
                         callback: "JSON_CALLBACK",
                     };
 
-                    if(typeof request.items !== "undefined") {
+                    if (typeof request.items !== "undefined") {
                         requestObject.num = request.items;
                     } else {
                         requestObject.num = appSettings.items;
@@ -46,18 +46,18 @@ var jjtApingRss = angular.module("jtt_aping_rss", [])
                         return false;
                     }
 
-                    if(request.path) {
+                    if (request.path) {
                         requestObject.q = request.path;
                     }
 
-                    if(request.protocol === "http" || request.protocol === "https") {
-                        requestObject.protocol = request.protocol+"://";
+                    if (request.protocol === "http" || request.protocol === "https") {
+                        requestObject.protocol = request.protocol + "://";
                     } else {
                         requestObject.protocol = "//";
                     }
 
                     // -1 is "no explicit limit". same for NaN value
-                    if(requestObject.num < 0 || isNaN(requestObject.num)) {
+                    if (requestObject.num < 0 || isNaN(requestObject.num)) {
                         requestObject.num = undefined;
                     }
 
