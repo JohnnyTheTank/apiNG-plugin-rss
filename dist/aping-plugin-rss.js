@@ -174,6 +174,8 @@ angular.module("jtt_aping_rss")
                 var imagesArray = apingUtilityHelper.getFirstImageFromHtml(_item.content);
                 if (imagesArray && imagesArray.length > 1) {
                     socialObject.img_url = imagesArray[1];
+                    socialObject.thumb_url = imagesArray[1];
+                    socialObject.native_url = imagesArray[1];
                 }
             }
 
