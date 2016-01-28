@@ -1,6 +1,6 @@
 /**
     @name: aping-plugin-rss 
-    @version: 0.7.7 (24-01-2016) 
+    @version: 0.7.8 (28-01-2016) 
     @author: Jonathan Hornung 
     @url: https://github.com/JohnnyTheTank/apiNG-plugin-rss#readme 
     @license: MIT
@@ -128,7 +128,6 @@ angular.module("jtt_aping_rss")
                         }
                     });
                 }
-
             }
             return requestResults;
         };
@@ -157,7 +156,7 @@ angular.module("jtt_aping_rss")
             var socialObject = apingModels.getNew("social", this.getThisPlatformString());
 
             //fill _item in socialObject
-            $.extend(true, socialObject, {
+            angular.extend(socialObject, {
                 blog_name: _item.blog_author || undefined,
                 blog_link: _item.blog_link || undefined,
                 post_url: _item.link || undefined,
@@ -183,5 +182,4 @@ angular.module("jtt_aping_rss")
 
             return socialObject;
         };
-
     }]);

@@ -29,7 +29,6 @@ angular.module("jtt_aping_rss")
                         }
                     });
                 }
-
             }
             return requestResults;
         };
@@ -58,7 +57,7 @@ angular.module("jtt_aping_rss")
             var socialObject = apingModels.getNew("social", this.getThisPlatformString());
 
             //fill _item in socialObject
-            $.extend(true, socialObject, {
+            angular.extend(socialObject, {
                 blog_name: _item.blog_author || undefined,
                 blog_link: _item.blog_link || undefined,
                 post_url: _item.link || undefined,
@@ -84,5 +83,4 @@ angular.module("jtt_aping_rss")
 
             return socialObject;
         };
-
     }]);
