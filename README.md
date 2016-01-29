@@ -42,7 +42,6 @@ Include `aping-plugin-rss.min.js` in your apiNG application
 <!-- when using npm -->
 <script src="node_modules/aping-plugin-rss/dist/aping-plugin-rss.min.js"></script>
 
-
 <!-- when using cdn file -->
 <script src="//cdn.jsdelivr.net/aping.plugin-rss/latest/aping-plugin-rss.min.js"></script>
 
