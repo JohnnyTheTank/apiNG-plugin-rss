@@ -1,6 +1,6 @@
 /**
     @name: aping-plugin-rss 
-    @version: 0.7.8 (28-01-2016) 
+    @version: 0.7.8 (31-01-2016) 
     @author: Jonathan Hornung 
     @url: https://github.com/JohnnyTheTank/apiNG-plugin-rss#readme 
     @license: MIT
@@ -25,7 +25,8 @@ angular.module("jtt_aping_rss", [])
                     var helperObject = {
                         model: appSettings.model,
                     };
-                    if (typeof appSettings.getNativeData !== "undefined") {
+
+                    if (angular.isDefined(appSettings.getNativeData)) {
                         helperObject.getNativeData = appSettings.getNativeData;
                     } else {
                         helperObject.getNativeData = false;
@@ -43,7 +44,7 @@ angular.module("jtt_aping_rss", [])
                         callback: "JSON_CALLBACK",
                     };
 
-                    if (typeof request.items !== "undefined") {
+                    if (angular.isDefined(request.items)) {
                         requestObject.num = request.items;
                     } else {
                         requestObject.num = appSettings.items;
