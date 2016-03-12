@@ -1,6 +1,6 @@
 /**
     @name: aping-plugin-rss 
-    @version: 0.7.8 (31-01-2016) 
+    @version: 0.7.9 (12-03-2016) 
     @author: Jonathan Hornung 
     @url: https://github.com/JohnnyTheTank/apiNG-plugin-rss#readme 
     @license: MIT
@@ -60,6 +60,8 @@ angular.module("jtt_aping_rss", [])
 
                     if (request.protocol === "http" || request.protocol === "https") {
                         requestObject.protocol = request.protocol + "://";
+                    } else  if (appSettings.protocol === "http" || appSettings.protocol === "https") {
+                        requestObject.protocol = appSettings.protocol + "://";
                     } else {
                         requestObject.protocol = "//";
                     }
