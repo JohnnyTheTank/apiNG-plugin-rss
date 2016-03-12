@@ -53,6 +53,8 @@ angular.module("jtt_aping_rss", [])
 
                     if (request.protocol === "http" || request.protocol === "https") {
                         requestObject.protocol = request.protocol + "://";
+                    } else  if (appSettings.protocol === "http" || appSettings.protocol === "https") {
+                        requestObject.protocol = appSettings.protocol + "://";
                     } else {
                         requestObject.protocol = "//";
                     }
