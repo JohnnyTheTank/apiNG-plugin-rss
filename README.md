@@ -10,7 +10,7 @@
 # Information
 * **Supported apiNG models: `social`, `native` (RSS)**
 * This plugin supports the [`get-native-data` parameter](https://aping.readme.io/docs/advanced#parameters)
-* Used RSS->JSON parse service: `http://ajax.googleapis.com/ajax/services/feed/load`
+* Used RSS->JSON parse service: `https://rss2json.com/`
 
 # Documentation
 

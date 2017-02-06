@@ -10,7 +10,6 @@
     <script src="../dist/aping-plugin-rss.js"></script>
 </head>
 <body ng-app="app">
-
     <aping
             template-url="template.html"
             model="social"
@@ -20,7 +19,7 @@
     <aping
             template-url="template.html"
             model="social"
-            items="5"
+            items="1"
             order-by="caption"
             order-reverse="false"
             aping-rss="[{'path':'http://feeds.feedburner.com/Angular-jsDirectives?utm_source=angular-js.in&utm_medium=website&utm_campaign=content-curation'}]">
@@ -29,7 +28,7 @@
     <aping
             template-url="template.html"
             model="native"
-            aping-rss="[{'path':'http://blog.hackerearth.com/feed'}]">
+            aping-rss="[{'path':'http://blog.hackerearth.com/feed', 'protocol':'https'}]">
     </aping>
 </body>
 </html>
