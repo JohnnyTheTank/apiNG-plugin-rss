@@ -4,7 +4,6 @@ module.exports = function(grunt) {
 
     var files = [
                     'src/aping-rss-directive.js',
-                    'src/aping-rss-factory.js',
                     'src/aping-rss-helper.js'
                 ];
 

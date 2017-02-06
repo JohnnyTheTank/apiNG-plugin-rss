@@ -1,6 +1,6 @@
 /**
     @name: aping-plugin-rss 
-    @version: 0.7.9 (12-03-2016) 
+    @version: 0.8.0 (06-02-2017) 
     @author: Jonathan Hornung 
     @url: https://github.com/JohnnyTheTank/apiNG-plugin-rss#readme 
     @license: MIT
@@ -8,7 +8,7 @@
 "use strict";
 
 angular.module("jtt_aping_rss", [])
-    .directive('apingRss', ['apingRssHelper', 'apingUtilityHelper', 'rssFactory', function (apingRssHelper, apingUtilityHelper, rssFactory) {
+    .directive('apingRss', ['apingRssHelper', 'apingUtilityHelper', 'jsonloaderFactory', function (apingRssHelper, apingUtilityHelper, jsonloaderFactory) {
         return {
             require: '?aping',
             restrict: 'A',
@@ -39,31 +39,28 @@ angular.module("jtt_aping_rss", [])
                     }
 
                     //create requestObject for api request call
-                    var requestObject = {
-                        v: "1.0",
-                        callback: "JSON_CALLBACK",
-                    };
+                    var requestObject = {};
 
                     if (angular.isDefined(request.items)) {
-                        requestObject.num = request.items;
+                        helperObject.items = request.items;
                     } else {
-                        requestObject.num = appSettings.items;
+                        helperObject.items = appSettings.items;
                     }
 
-                    if (requestObject.num === 0 || requestObject.num === '0') {
+                    if (helperObject.items === 0 || helperObject.items === '0') {
                         return false;
-                    }
-
-                    if (request.path) {
-                        requestObject.q = request.path;
                     }
 
                     if (request.protocol === "http" || request.protocol === "https") {
                         requestObject.protocol = request.protocol + "://";
-                    } else  if (appSettings.protocol === "http" || appSettings.protocol === "https") {
+                    } else if (appSettings.protocol === "http" || appSettings.protocol === "https") {
                         requestObject.protocol = appSettings.protocol + "://";
                     } else {
                         requestObject.protocol = "//";
+                    }
+
+                    if (request.path) {
+                        requestObject.path = requestObject.protocol + 'api.rss2json.com/v1/api.json?rss_url=' + request.path
                     }
 
                     // -1 is "no explicit limit". same for NaN value
@@ -71,8 +68,7 @@ angular.module("jtt_aping_rss", [])
                         requestObject.num = undefined;
                     }
 
-                    //get _data for each request
-                    rssFactory.getData(requestObject)
+                    jsonloaderFactory.getJsonData(requestObject)
                         .then(function (_data) {
                             if (_data) {
                                 apingController.concatToResults(apingRssHelper.getObjectByJsonData(_data, helperObject));
@@ -84,25 +80,6 @@ angular.module("jtt_aping_rss", [])
     }]);;"use strict";
 
 angular.module("jtt_aping_rss")
-    .factory('rssFactory', ['$http', function ($http) {
-        var rssFactory = {};
-        rssFactory.getData = function (_requestObject) {
-
-            var url = _requestObject.protocol + 'ajax.googleapis.com/ajax/services/feed/load';
-            _requestObject.protocol = undefined;
-
-            return $http.jsonp(
-                url,
-                {
-                    method: 'GET',
-                    params: _requestObject
-                }
-            );
-        };
-        return rssFactory;
-    }]);;"use strict";
-
-angular.module("jtt_aping_rss")
     .service('apingRssHelper', ['apingModels', 'apingTimeHelper', 'apingUtilityHelper', function (apingModels, apingTimeHelper, apingUtilityHelper) {
         this.getThisPlatformString = function () {
             return "rss";
@@ -110,27 +87,27 @@ angular.module("jtt_aping_rss")
 
         this.getObjectByJsonData = function (_data, _helperObject) {
             var requestResults = [];
-            if (_data && _data.data && _data.data.responseData) {
-                if (_data.data.responseData.feed && _data.data.responseData.feed.entries) {
+            if (_data && _data.data && _data.data.items) {
 
-                    var _this = this;
+                var _this = this;
+                var tempResult;
 
-                    angular.forEach(_data.data.responseData.feed.entries, function (value, key) {
-                        var tempResult;
+                angular.forEach(_data.data.items, function (value, key) {
+                    if (typeof _helperObject.items === "undefined" || requestResults.length < _helperObject.items) {
                         if (_helperObject.getNativeData === true || _helperObject.getNativeData === "true") {
                             tempResult = value;
                         } else {
 
-                            value.blog_link = _data.data.responseData.feed.link || _data.data.responseData.feed.feedUrl || undefined;
-                            value.blog_author = _data.data.responseData.feed.author || _data.data.responseData.feed.title || undefined;
+                            value.blog_link = _data.data.feed.link || _data.data.feed.feedUrl || undefined;
+                            value.blog_author = _data.data.feed.author || _data.data.feed.title || undefined;
 
                             tempResult = _this.getItemByJsonData(value, _helperObject);
                         }
                         if (tempResult) {
                             requestResults.push(tempResult);
                         }
-                    });
-                }
+                    }
+                });
             }
             return requestResults;
         };

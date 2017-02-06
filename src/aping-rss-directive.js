@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module("jtt_aping_rss", [])
-    .directive('apingRss', ['apingRssHelper', 'apingUtilityHelper', 'rssFactory', function (apingRssHelper, apingUtilityHelper, rssFactory) {
+    .directive('apingRss', ['apingRssHelper', 'apingUtilityHelper', 'jsonloaderFactory', function (apingRssHelper, apingUtilityHelper, jsonloaderFactory) {
         return {
             require: '?aping',
             restrict: 'A',
@@ -32,31 +32,28 @@ angular.module("jtt_aping_rss", [])
                     }
 
                     //create requestObject for api request call
-                    var requestObject = {
-                        v: "1.0",
-                        callback: "JSON_CALLBACK",
-                    };
+                    var requestObject = {};
 
                     if (angular.isDefined(request.items)) {
-                        requestObject.num = request.items;
+                        helperObject.items = request.items;
                     } else {
-                        requestObject.num = appSettings.items;
+                        helperObject.items = appSettings.items;
                     }
 
-                    if (requestObject.num === 0 || requestObject.num === '0') {
+                    if (helperObject.items === 0 || helperObject.items === '0') {
                         return false;
-                    }
-
-                    if (request.path) {
-                        requestObject.q = request.path;
                     }
 
                     if (request.protocol === "http" || request.protocol === "https") {
                         requestObject.protocol = request.protocol + "://";
-                    } else  if (appSettings.protocol === "http" || appSettings.protocol === "https") {
+                    } else if (appSettings.protocol === "http" || appSettings.protocol === "https") {
                         requestObject.protocol = appSettings.protocol + "://";
                     } else {
                         requestObject.protocol = "//";
+                    }
+
+                    if (request.path) {
+                        requestObject.path = requestObject.protocol + 'api.rss2json.com/v1/api.json?rss_url=' + request.path
                     }
 
                     // -1 is "no explicit limit". same for NaN value
@@ -64,8 +61,7 @@ angular.module("jtt_aping_rss", [])
                         requestObject.num = undefined;
                     }
 
-                    //get _data for each request
-                    rssFactory.getData(requestObject)
+                    jsonloaderFactory.getJsonData(requestObject)
                         .then(function (_data) {
                             if (_data) {
                                 apingController.concatToResults(apingRssHelper.getObjectByJsonData(_data, helperObject));

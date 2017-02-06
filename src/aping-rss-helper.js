@@ -8,27 +8,27 @@ angular.module("jtt_aping_rss")
 
         this.getObjectByJsonData = function (_data, _helperObject) {
             var requestResults = [];
-            if (_data && _data.data && _data.data.responseData) {
-                if (_data.data.responseData.feed && _data.data.responseData.feed.entries) {
+            if (_data && _data.data && _data.data.items) {
 
-                    var _this = this;
+                var _this = this;
+                var tempResult;
 
-                    angular.forEach(_data.data.responseData.feed.entries, function (value, key) {
-                        var tempResult;
+                angular.forEach(_data.data.items, function (value, key) {
+                    if (typeof _helperObject.items === "undefined" || requestResults.length < _helperObject.items) {
                         if (_helperObject.getNativeData === true || _helperObject.getNativeData === "true") {
                             tempResult = value;
                         } else {
 
-                            value.blog_link = _data.data.responseData.feed.link || _data.data.responseData.feed.feedUrl || undefined;
-                            value.blog_author = _data.data.responseData.feed.author || _data.data.responseData.feed.title || undefined;
+                            value.blog_link = _data.data.feed.link || _data.data.feed.feedUrl || undefined;
+                            value.blog_author = _data.data.feed.author || _data.data.feed.title || undefined;
 
                             tempResult = _this.getItemByJsonData(value, _helperObject);
                         }
                         if (tempResult) {
                             requestResults.push(tempResult);
                         }
-                    });
-                }
+                    }
+                });
             }
             return requestResults;
         };
