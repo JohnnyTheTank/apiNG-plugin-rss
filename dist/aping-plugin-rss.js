@@ -1,6 +1,6 @@
 /**
     @name: aping-plugin-rss 
-    @version: 0.8.0 (06-02-2017) 
+    @version: 0.8.1 (14-09-2018) 
     @author: Jonathan Hornung 
     @url: https://github.com/JohnnyTheTank/apiNG-plugin-rss#readme 
     @license: MIT
@@ -159,7 +159,7 @@ angular.module("jtt_aping_rss")
                 }
             }
 
-            socialObject.date_time = _item.publishedDate ? new Date(_item.publishedDate) : undefined;
+            socialObject.date_time = _item.pubDate ? new Date(_item.pubDate) : undefined;
             socialObject.timestamp = socialObject.date_time ? socialObject.date_time.getTime() : undefined;
 
             return socialObject;

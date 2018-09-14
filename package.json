@@ -1,6 +1,6 @@
 {
   "name": "aping-plugin-rss",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "RSS plugin for apiNG",
   "main": "dist/aping-plugin-rss.min.js",
   "scripts": {
