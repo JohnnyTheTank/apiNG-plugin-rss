@@ -80,7 +80,7 @@ angular.module("jtt_aping_rss")
                 }
             }
 
-            socialObject.date_time = _item.publishedDate ? new Date(_item.publishedDate) : undefined;
+            socialObject.date_time = _item.pubDate ? new Date(_item.pubDate) : undefined;
             socialObject.timestamp = socialObject.date_time ? socialObject.date_time.getTime() : undefined;
 
             return socialObject;
